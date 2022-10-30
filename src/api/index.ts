@@ -1,7 +1,6 @@
 import { initBackend } from 'absurd-sql/dist/indexeddb-main-thread';
 import { RPCMessageEvent, RPC, RPCError } from 'rpc-shooter';
 import { DatabaseErrorCode } from '@/constant';
-// @ts-ignore
 // import IMWorker from './worker?worker';
 
 let rpc: RPC | undefined;
@@ -17,12 +16,12 @@ function initWorker() {
   // This is only required because Safari doesn't support nested
   // workers. This installs a handler that will proxy creating web
   // workers through the main thread
-  initBackend(worker!);
+  initBackend(worker);
 
   rpc = new RPC({
     event: new RPCMessageEvent({
-      currentEndpoint: worker!,
-      targetEndpoint: worker!,
+      currentEndpoint: worker,
+      targetEndpoint: worker,
     }),
   });
 }
