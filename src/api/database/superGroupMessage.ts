@@ -165,14 +165,6 @@ export async function superGroupUpdateMessage(
       message
     );
 
-    if (execResult.length === 0) {
-      return formatResponse(
-        '',
-        DatabaseErrorCode.ErrorNoRecord,
-        `super group update message failed groupID:${groupID}, clientMsgID:${clientMsgID}`
-      );
-    }
-
     return formatResponse(execResult);
   } catch (e) {
     console.error(e);
